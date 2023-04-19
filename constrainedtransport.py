@@ -312,7 +312,7 @@ def init_Orzag_Tang(boxsize, N, gamma):
 
 def init_Field_loop( boxsize, N, gamma ):
 	# from Athena++
-	vflow = 3
+	vflow = np.sqrt(2)
 	rad = 0.3
 	amp = 1.e-3
 
@@ -351,8 +351,6 @@ def init_Field_loop( boxsize, N, gamma ):
 	Az = np.clip(amp*(rad - dist),0,None)
 	bx, by = getCurl(Az, dx)
 	Bx, By = getBavg(bx, by)
-	Bmag = np.sqrt(Bx**2+By**2)
-	print(Bmag.min(),Bmag.max())
 
 	# add magnetic pressure to get the total pressure
 	P = P + 0.5*(Bx**2 + By**2)
@@ -366,8 +364,8 @@ def main():
 	gamma                  = 5/3 # ideal gas gamma
 	courant_fac            = 0.4
 	t                      = 0
-	tEnd                   = 0.5
-	tOut                   = 0.01 # draw frequency
+	tEnd                   = 2.0
+	tOut                   = 0.1 # draw frequency
 	useSlopeLimiting       = True
 	plotRealTime = True # switch on for plotting as the simulation goes along
 
@@ -461,8 +459,8 @@ def main():
 			# plt.clim(0.06, 0.5)
 			Bx, By = getBavg(bx, by)
 			Pmag = Bx**2+By**2
-			plt.imshow(Pmag.T, cmap='RdBu')
-			plt.clim(0.0, 1.e-6)
+			plt.imshow(Pmag.T, cmap='RdBu_r')
+			# plt.clim(0.0, 1.e-6)
 			ax = plt.gca()
 			ax.invert_yaxis()
 			ax.get_xaxis().set_visible(False)

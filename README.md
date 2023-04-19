@@ -5,7 +5,8 @@ Finite Volume Constrained Transport simulation of the Orszag-Tang vortex
 
 ### Philip Mocz (2023), [@PMocz](https://twitter.com/PMocz)
 
-Simulate the Orszag-Tang vortex MHD problem
+Modified by Chang-Goo Kim [@changgoo](http://changgoo.github.io) to simulate the Field Loop advection test presented in
+[Gardiner & Stone (2005)](https://ui.adsabs.harvard.edu/abs/2005JCoPh.205..509G/abstract).
 
 
 ```
